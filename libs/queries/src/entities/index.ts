@@ -1,0 +1,7 @@
+export * from './comment.entity'
+export * from './evalution.entity'
+export * from './laptop.entity'
+export * from './order-detail.entity'
+export * from './order.entity'
+export * from './role.entity'
+export * from './user.entity'

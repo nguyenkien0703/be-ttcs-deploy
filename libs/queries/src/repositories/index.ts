@@ -1,0 +1,7 @@
+export * from './evalution.repository'
+export * from './laptop.repository'
+export * from './user.repository'
+export * from './order-detail.repository'
+export * from './order.repository'
+export * from './role.repository'
+export * from './comment.repository'
