@@ -1,0 +1,67 @@
+services:
+  # MySQL Database Service
+  mysql:
+    image: mysql:8.0
+    container_name: be-ttcs-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - be-ttcs-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_PASS}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  app:
+    build:
+      context: .
+      dockerfile: ./devops/dockerfile
+      args:
+        DB_HOST: mysql
+        DB_PORT: 3306
+        DB_NAME: ${DB_NAME}
+        DB_USER: ${DB_USER}
+        DB_PASS: ${DB_PASS}
+        DB_TYPE: ${DB_TYPE}
+        DB_LOGGING: ${DB_LOGGING}
+        DB_SYNC: ${DB_SYNC}
+        API_PORT: ${API_PORT}
+        API_PREFIX: ${API_PREFIX}
+        ACCESS_JWT_SECRET_KEY: ${ACCESS_JWT_SECRET_KEY}
+        REFRESH_JWT_SECRET_KEY: ${REFRESH_JWT_SECRET_KEY}
+        ACCESS_TOKEN_EXPIRE_IN_SEC: ${ACCESS_TOKEN_EXPIRE_IN_SEC}
+        REFRESH_TOKEN_EXPIRE_IN_SEC: ${REFRESH_TOKEN_EXPIRE_IN_SEC}
+        PASSWORD_SECRET_KEY_USER: ${PASSWORD_SECRET_KEY_USER}
+        EMAIL_HOST: ${EMAIL_HOST}
+        EMAIL_PORT: ${EMAIL_PORT}
+        EMAIL_SECURE: ${EMAIL_SECURE}
+        EMAIL_USER: ${EMAIL_USER}
+        EMAIL_PASSWORD: ${EMAIL_PASSWORD}
+        CC_EMAILS: ${CC_EMAILS}
+        IP_ADDRESS: ${IP_ADDRESS}
+        FE_PORT: ${FE_PORT}
+    container_name: local-app
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "${API_PORT}:${API_PORT}"
+    networks:
+      - be-ttcs-network
+
+
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  be-ttcs-network:
+    driver: bridge

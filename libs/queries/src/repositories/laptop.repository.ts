@@ -89,6 +89,7 @@ export class LaptopRepository extends Repository<Laptop> {
                 material: updateLaptopDto.material,
                 brand: updateLaptopDto.brand,
                 quantity: updateLaptopDto.quantity,
+                image: updateLaptopDto.image,
             })
             .where('laptops.id = :id', {
                 id: laptopId,

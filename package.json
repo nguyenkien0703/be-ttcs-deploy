@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "\"nest build app\" \"nest build queries\" \"nest build share\"",
+    "build": "nest build app && nest build queries && nest build share",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "format:lint-staged": "lint-staged",

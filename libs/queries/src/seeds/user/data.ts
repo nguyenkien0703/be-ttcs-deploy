@@ -3,8 +3,8 @@ import { User } from '@app/queries/entities'
 
 export class InsertUserDto extends PartialType(User) {}
 /**
- * nguyenkien -> $2b$10$YiXVxvtcscz0ZEP0MSER/uvkjg1Z2178sD4akfNm70C8h.ltFwUHi
- *
+ * Plain password: Kien123ns@
+ * Hashed password: $2b$10$sniZTbxYLePMvDKvNaIj2eAP2xJduxBhtONxu3Zt4xnewYqsGfWIO
  */
 export const userData: InsertUserDto[] = [
     {
@@ -12,7 +12,7 @@ export const userData: InsertUserDto[] = [
         email: 'nguyenkien123ns@gmail.com',
         address: 'Yên Phong - Bắc Ninh',
         password:
-            '$2b$10$pDa1qETnhA5NDLg0GiKMu.2Zdh10k6clOYIMdkyFuCMdy9dkuRqNG',
+            '$2b$10$sniZTbxYLePMvDKvNaIj2eAP2xJduxBhtONxu3Zt4xnewYqsGfWIO',
         phone: '372109881',
         // avatar: "https://static1.bestie.vn/Mlog/ImageContent/201909/dau-hieu-cua-nguoi-chua-truong-thanh-de-avatar-den-khi-that-tinh-5f32ad.jpg",
         roleId: 1,

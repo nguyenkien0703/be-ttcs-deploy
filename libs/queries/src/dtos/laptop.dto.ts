@@ -132,6 +132,14 @@ export class CreateLaptopDto {
         example: 'Dell',
     })
     brand: string
+
+    @IsNotEmpty()
+    @IsString()
+    @ApiProperty({
+        required: true,
+        example: 'https://example.com/laptop-image.jpg',
+    })
+    image: string
 }
 
 export class UpdateLaptopDto {
@@ -255,6 +263,14 @@ export class UpdateLaptopDto {
         example: 'Dell',
     })
     brand: string
+
+    @IsOptional()
+    @IsString()
+    @ApiProperty({
+        required: false,
+        example: 'https://example.com/laptop-image.jpg',
+    })
+    image: string
 }
 
 export class LaptopDto {
