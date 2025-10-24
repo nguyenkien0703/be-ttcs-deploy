@@ -10,7 +10,7 @@ on:
 
 env:
   # default (will be overridden in Set IMAGE_NAME)
-  IMAGE_NAME: ghcr.io/nguyenkien0703/${{ github.repository }}
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
 
 jobs:
   build-and-push:
