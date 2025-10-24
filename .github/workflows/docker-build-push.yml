@@ -34,6 +34,7 @@ jobs:
       - name: Set IMAGE_NAME
         run: |
           REPO="${{ github.repository }}"
+          echo "value of repo is $REPO"
           if [ "${{ github.ref_type }}" = "tag" ]; then
             NAME="ghcr.io/nguyenkien0703/prod/${REPO}"  # prod path for tags
           else
