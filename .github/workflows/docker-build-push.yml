@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  # default (will be overridden in Set IMAGE_NAME)
+  IMAGE_NAME: ghcr.io/nguyenkien0703/${{ github.repository }}
 
 jobs:
   build-and-push:
@@ -51,7 +51,6 @@ jobs:
           tags: |
             ${{ env.IMAGE_NAME }}:latest
             ${{ env.IMAGE_NAME }}:${{ github.sha }} 
-          
           build-args: |
             DB_HOST=${{ secrets.DB_HOST }}
             DB_PORT=${{ secrets.DB_PORT }}
