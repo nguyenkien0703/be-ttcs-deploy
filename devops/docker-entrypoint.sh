@@ -2,7 +2,7 @@
 
 echo "🔄 Waiting for MySQL to be ready..."
 # Đợi MySQL sẵn sàng
-until nc -z mysql 3306; do
+until nc -z "$DB_HOST" "$DB_PORT"; do
   echo "⏳ MySQL is unavailable - sleeping"
   sleep 2
 done
