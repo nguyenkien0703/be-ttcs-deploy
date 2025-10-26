@@ -14,6 +14,7 @@ import { OrderModule } from './orders/order.module'
 import { EvalutionModule } from './evalutions/evalution.module'
 import { OrderDetailModule } from './order-detail/order-detail.module'
 import { EmailModule } from './emails/email.module'
+import { CategoryModule } from './categories/category.module'
 
 @Module({
     imports: [
@@ -32,6 +33,7 @@ import { EmailModule } from './emails/email.module'
         EvalutionModule,
         OrderDetailModule,
         EmailModule,
+        CategoryModule,
     ],
     controllers: [AppController],
     providers: [AppService],
